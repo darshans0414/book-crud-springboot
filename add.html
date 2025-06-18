@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Add Book</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <h2>Add New Book</h2>
+  <form id="bookForm">
+    Title: <input type="text" id="title"><br><br>
+    Author: <input type="text" id="author"><br><br>
+    Price: <input type="number" id="price" step="0.01"><br><br>
+    <button type="submit">Save</button>
+  </form>
+  <br>
+  <button onclick="window.location.href='index.html'">Back</button>
+
+  <script>
+    document.getElementById('bookForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const book = {
+        title: document.getElementById('title').value,
+        author: document.getElementById('author').value,
+        price: document.getElementById('price').value
+      };
+
+      fetch('/books', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(book)
+      }).then(() => window.location.href = 'index.html');
+    });
+  </script>
+</body>
+</html>

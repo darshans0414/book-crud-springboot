@@ -1,0 +1,84 @@
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-image: url('https://cdn.pixabay.com/photo/2015/09/05/21/51/books-925589_1280.jpg');
+  background-size: cover;
+  background-position: center;
+  color: #fff;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 30px;
+  margin: 50px auto;
+  width: 90%;
+  max-width: 1000px;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #f1c40f;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+th, td {
+  padding: 12px;
+  border: 1px solid #fff;
+  text-align: center;
+}
+
+th {
+  background-color: #f1c40f;
+  color: black;
+}
+
+button {
+  padding: 6px 12px;
+  border: none;
+  border-radius: 4px;
+  margin: 2px;
+  cursor: pointer;
+}
+
+.add-btn {
+  background-color: #27ae60;
+  color: white;
+  margin-bottom: 20px;
+}
+
+.edit-btn {
+  background-color: #2980b9;
+  color: white;
+}
+
+.delete-btn {
+  background-color: #c0392b;
+  color: white;
+}
+
+.add-btn:hover, .edit-btn:hover, .delete-btn:hover {
+  opacity: 0.8;
+}
+
+form input {
+  padding: 10px;
+  margin-bottom: 15px;
+  width: 100%;
+  border: none;
+  border-radius: 4px;
+}
+
+form button {
+  background-color: #27ae60;
+  color: white;
+  padding: 10px 20px;
+}

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Book List</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="container">
+    <h2>Book List</h2>
+
+    <!-- Top action buttons -->
+    <div style="text-align: center; margin-bottom: 20px;">
+      <button class="add-btn" onclick="window.location.href='add.html'">Add Book</button>
+    </div>
+
+    <!-- Book Table -->
+    <table id="bookTable">
+      <tr>
+        <th>ID</th>
+        <th>Title</th>
+        <th>Author</th>
+        <th>Price</th>
+        <th>Actions</th>
+      </tr>
+    </table>
+  </div>
+
+  <script>
+    // Fetch all books and show in table with Sr. No.
+    fetch('/books')
+      .then(res => res.json())
+      .then(data => {
+        const table = document.getElementById('bookTable');
+        let ID = 1; // 👈 Sr. No. counter
+        data.forEach(book => {
+          const row = table.insertRow();
+          row.innerHTML = `
+            <td>${ID++}</td>
+            <td>${book.title}</td>
+            <td>${book.author}</td>
+            <td>${book.price}</td>
+            <td>
+              <button class="edit-btn" onclick="editBook(${book.id})">Edit</button>
+              <button class="delete-btn" onclick="deleteBook(${book.id})">Delete</button>
+            </td>
+          `;
+        });
+      });
+
+    function deleteBook(id) {
+      fetch('/books/' + id, { method: 'DELETE' })
+        .then(() => location.reload());
+    }
+
+    function editBook(id) {
+      window.location.href = `edit.html?id=${id}`;
+    }
+
+    function openEdit() {
+      const id = prompt("Enter Book ID to edit:");
+      if (id) {
+        editBook(id);
+      }
+    }
+  </script>
+</body>
+</html>
